@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     function blogs(){
     $blogs= DB::table('blogs')->paginate(10);
     return view ('blogs',compact ('blogs'));
